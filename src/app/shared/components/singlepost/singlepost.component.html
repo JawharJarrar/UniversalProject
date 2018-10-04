@@ -1,0 +1,35 @@
+
+<mat-card-header>
+  <div mat-card-avatar class="example-header-image"></div>
+  <mat-card-title>
+    <h1 class="mat-h1">{{post.title}}</h1>
+  </mat-card-title>
+</mat-card-header>
+<img src="../assets/post.png"   alt="Post">
+<mat-card-content>
+  <h2 class="mat-h2">content:{{post.body}}</h2>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> <h4>show comments </h4>  </mat-panel-title>
+
+    </mat-expansion-panel-header>
+    <button    mat-raised-button color="warn"  (click)=AddComment(post.id) >Add Comment</button>
+
+    <mat-list  *ngFor="let comment of comments">
+       <h4 >name:{{comment.name}}</h4>
+       <h4>email:{{comment.email}}</h4>
+       <h3>content: {{comment.body}}</h3>
+      <mat-list-item>
+
+          <mat-card-actions>
+            <button  mat-raised-button color="warn"   (click)=deleteComment(comment) >Delete Comment</button>
+            <button   mat-raised-button  color="primary"   (click)=editComment(post.id,comment.id,comment) >edit Comment</button>
+          </mat-card-actions>
+          <mat-divider></mat-divider>
+      </mat-list-item>
+      </mat-list>
+  </mat-expansion-panel>
+
+</mat-card-content>
+
+
