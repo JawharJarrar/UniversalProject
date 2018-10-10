@@ -14,7 +14,7 @@ router.put('/:id', UpdateUser);
 function FindAllUsers(req, res, next)  {
   db.query('select * from  users', (error, rows, fields) => {
     if (error) {
-      res.json({ 'mysql list users error ': error });
+      res.json('mysql list error for user ');
       }
   res.json(rows);
   });

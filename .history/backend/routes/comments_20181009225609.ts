@@ -20,7 +20,7 @@ router.put('/:id', UpdateComment);
 function  DeleteComment(req, res, next)   {
   db.query('Delete from  comments  where id=?', [req.params.id], (error, rows, fields) => {
     if (error) {
-      res.json({ 'mysql delete error ': error });
+      res.json({ 'mysql delte error ': error });
     }
   });
   Comment.findOneAndRemove({id: req.params.id}, function (error) {
