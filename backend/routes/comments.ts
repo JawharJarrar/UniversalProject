@@ -1,10 +1,10 @@
-import  * as express from 'express';
-import { CommentSchema } from  '../models/comment' ;
-import * as mongoose from 'mongoose';
-
+export{};
+const express = require('express');
 const shortid = require('shortid');
 const router = express.Router();
 const db = require  ('../database');
+const mongoose = require('mongoose');
+const { CommentSchema } = require('../models/comment') ;
 const Comment = mongoose.model('comment', CommentSchema);
 /**
  * comments apis

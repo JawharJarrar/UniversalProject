@@ -1,10 +1,8 @@
-import * as mongoose from 'mongoose';
-
+const mongoose = require('mongoose');
 export const  UserSchema = new mongoose.Schema({
   id: String,
   name: String,
   username: String,
-  // tslint:disable-next-line:object-literal-sort-keys
   email: String,
   phone: String,
   website: String,
@@ -16,7 +14,6 @@ export const  UserSchema = new mongoose.Schema({
   address: {
     street: String,
     suite: String,
-    // tslint:disable-next-line:object-literal-sort-keys
     city: String,
     zipcode: String,
     geo: {

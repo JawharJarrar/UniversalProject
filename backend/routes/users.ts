@@ -1,9 +1,9 @@
-import  * as express from 'express';
-import { UserSchema } from  '../models/user' ;
-import * as mongoose from 'mongoose';
+import express = require('express');
 const shortid = require('shortid');
 const router = express.Router();
 const db = require  ('../database');
+const mongoose = require('mongoose');
+const { UserSchema } = require('../models/user') ;
 const User = mongoose.model('user', UserSchema);
 
 router.get('/', FindAllUsers);

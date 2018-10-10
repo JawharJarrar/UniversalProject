@@ -1,14 +1,15 @@
 import app from '../server';
-import * as mongoose from 'mongoose';
-import * as chai from 'chai';
-import chaiHttp = require('chai-http');
-import 'mocha';
-import { CommentSchema } from  '../models/comment' ;
+const  db = require('../database');
+const mongoose = require('mongoose');
+const { CommentSchema } = require('../models/comment') ;
+const  chai = require ('chai');
+const chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
+require('mocha');
 const  should =  chai.should();
-const  db = require('../database');
 const Comment = mongoose.model('Comment', CommentSchema);
+
 
 /**
  * comment apis  unit tests

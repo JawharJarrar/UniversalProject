@@ -1,21 +1,18 @@
-import  * as express from 'express';
-import { AuthSchema } from  '../models/auth' ;
-import * as mongoose from 'mongoose';
-
+import express = require('express');
 const shortid = require('shortid');
 const router = express.Router();
 const db = require  ('../database');
+const mongoose = require('mongoose');
+const { AuthSchema } = require('../models/auth');
 const Auth = mongoose.model('auth', AuthSchema);
 /**
  * authentification apis
  */
 router.post('/register', Register);
 router.post('/login', Login);
-
 /**
  * functions used by the authentification apis
  */
-
 function Register(req, res, next) {
   const auth = req.body;
   auth.id = shortid.generate();

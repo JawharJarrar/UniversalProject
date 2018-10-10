@@ -5,7 +5,6 @@ const express = require('express');
 const { join } = require ('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
 /**
  * routes defenition
  */
@@ -20,7 +19,6 @@ const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist/server/ma
 const { ngExpressEngine } = require ('@nguniversal/express-engine');
 /** Import module map for lazy loading */
 const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
-
 /**
  * mongo db connection
  */

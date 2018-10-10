@@ -1,13 +1,13 @@
-import  * as express from 'express';
-import { PostSchema } from  '../models/post' ;
-import { CommentSchema } from  '../models/comment' ;
-import * as mongoose from 'mongoose';
+export{};
+const express = require('express');
 const shortid = require('shortid');
 const router = express.Router();
 const db = require  ('../database');
-const Comment = mongoose.model('comment', CommentSchema);
+const mongoose = require('mongoose');
+const { PostSchema } = require('../models/post') ;
+const { CommentSchema } = require ('../models/comment') ;
+const Comments = mongoose.model('comment', CommentSchema);
 const Post = mongoose.model('post', PostSchema);
-
 /**
  * posts apis
  */
@@ -30,7 +30,7 @@ function FindAllPosts(req, res, next) {
 }
 
 function CommentsByPost(req, res, next) {
-  Comment.find({postId: req.params.id}, function (error, comments) {
+  Comments.find({postId: req.params.id}, function (error, comments) {
     if (error) {
       res.json({' fetch  error ': error});
     }

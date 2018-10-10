@@ -1,12 +1,11 @@
 import app from '../server';
 const  db = require('../database');
-import * as mongoose from 'mongoose';
-import { UserSchema } from  '../models/user' ;
-import * as chai from 'chai';
-import chaiHttp = require('chai-http');
-
+const mongoose = require('mongoose');
+const { UserSchema } = require( '../models/user') ;
+const  chai = require ('chai');
+const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
-import 'mocha';
+require ('mocha');
 const  should =  chai.should();
 const User = mongoose.model('User', UserSchema);
 /**
@@ -23,6 +22,31 @@ describe('Users', function() {
   afterEach(function(done) {
     db.query('DELETE  FROM users');
     User.remove({}, (err) => {
+      done();
+    });
+  });
+
+  it('should list ALL users on /users GET', function(done) {
+    User.create({ name: 'jack',
+    email: 'Script@gmail.com',
+    phone: '50729254',
+    website: 'slack.com',
+     id: '77' });
+   db.query('INSERT INTO users values (?,?,NULL,?,?,?)', [
+     '77',
+     'jack',
+     'jack',
+     'jack',
+   'jack.com',
+ ]);
+    chai.request(app)
+    .get('/users')
+    .end(function(err, res) {
+      res.should.have.status(200);
+      // tslint:disable-next-line:no-unused-expression
+      res.should.have.json;
+      res.body.should.be.a('array');
+      res.body.length.should.be.eql(1);
       done();
     });
   });
@@ -82,30 +106,7 @@ describe('Users', function() {
     });
   });
 
-  it('should list ALL users on /users GET', function(done) {
-    User.create({ name: 'jack',
-    email: 'Script@gmail.com',
-    phone: '50729254',
-    website: 'slack.com',
-     id: '77' });
-   db.query('INSERT INTO users values (?,?,NULL,?,?,?)', [
-     '77',
-     'jack',
-     'jack',
-     'jack',
-   'jack.com',
- ]);
-    chai.request(app)
-    .get('/users')
-    .end(function(err, res) {
-      res.should.have.status(200);
-      // tslint:disable-next-line:no-unused-expression
-      res.should.have.json;
-      res.body.should.be.a('array');
-      res.body.length.should.be.eql(1);
-      done();
-    });
-  });
+
   it('should add a SINGLE user on /users POST', function(done) {
     chai.request(app)
       .post('/users')
