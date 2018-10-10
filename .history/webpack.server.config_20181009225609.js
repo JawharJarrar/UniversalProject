@@ -1,7 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
-
 
 module.exports = {
   entry: { server: './backend/server.ts' },
@@ -9,7 +7,7 @@ module.exports = {
   target: 'node',
   mode: 'none',
   // this makes sure we include node_modules and other 3rd party libraries
-  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
+  externals: [/node_modules/],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js'
@@ -25,9 +23,6 @@ module.exports = {
       path.join(__dirname, 'src'), // location of your src
       {} // a map of your routes
     ),
-    new webpack.DefinePlugin({
-      'typeof window': "\"object\""
-      }),
     new webpack.ContextReplacementPlugin(
       /(.+)?express(\\|\/)(.+)?/,
       path.join(__dirname, 'src'),
