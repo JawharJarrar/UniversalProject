@@ -5,14 +5,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## running project
 
-build project :`ng run build:ssr`
-run project :`ng run serve:ssr`
+build project :`npm run build:ssr`
+run project :`npm run serve:ssr`
 
 ## Running frontend unit tests
-`ng run test`
+`npm run test`
 
 ## Running backend unit tests
- `ng run testNode` 
+ `npm run testNode` 
 
 ## generate frontend documentation
  `npm run compodoc` to access documentation 
