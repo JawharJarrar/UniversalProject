@@ -14,6 +14,9 @@ Router.post('/', AddUser);
 Router.delete('/:id', DeleteUser);
 Router.put('/:id', UpdateUser);
 
+/**
+ * functions used by the users apis
+ */
 function FindAllUsers(req, res, next)  {
   db.query('select * from  users', (error, rows, fields) => {
     if (error) {
