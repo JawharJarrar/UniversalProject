@@ -1,20 +1,23 @@
-import express = require('express');
-const shortid = require('shortid');
-const router = express.Router();
-const db = require  ('../database');
-const mongoose = require('mongoose');
-const { UserSchema } = require('../models/user') ;
-const User = mongoose.model('user', UserSchema);
+import * as express from 'express';
+import * as shortid  from 'shortid';
+import db from '../database';
+import * as mongoose from 'mongoose';
+import { UserSchema } from '../models/user';
 
-router.get('/', FindAllUsers);
-router.post('/', AddUser);
-router.delete('/:id', DeleteUser);
-router.put('/:id', UpdateUser);
+const Router = express.Router();
+const User = mongoose.model('user', UserSchema);
+/**
+ * users apis
+ */
+Router.get('/', FindAllUsers);
+Router.post('/', AddUser);
+Router.delete('/:id', DeleteUser);
+Router.put('/:id', UpdateUser);
 
 function FindAllUsers(req, res, next)  {
   db.query('select * from  users', (error, rows, fields) => {
     if (error) {
-      res.json({ 'mysql list users error ': error });
+      res.json({ 'mysql fetch error ': error });
       }
   res.json(rows);
   });
@@ -75,5 +78,5 @@ function AddUser(req, res, next) {
   });
 }
 
-module.exports = router;
+export default Router ;
 

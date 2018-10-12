@@ -1,17 +1,17 @@
-require ('zone.js/dist/zone-node');
-require ('reflect-metadata');
-const { enableProdMode } = require ('@angular/core');
-const express = require('express');
-const { join } = require ('path');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+import 'zone.js/dist/zone-node';
+import 'reflect-metadata';
+import { enableProdMode } from '@angular/core';
+import * as express from 'express';
+import { join } from 'path';
+import * as mongoose from 'mongoose';
+import * as bodyParser from 'body-parser';
 /**
  * routes defenition
  */
-const  usersRouter = require('./routes/users');
-const  postsRouter = require('./routes/posts');
-const  commentsRouter = require('./routes/comments');
-const  authRouter = require('./routes/auth');
+import  usersRouter from './routes/users';
+import  postsRouter from './routes/posts';
+import  commentsRouter from './routes/comments';
+import  authRouter from './routes/auth';
 
 /**leave this as require() since this file is built Dynamically from webpack*/
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist/server/main');

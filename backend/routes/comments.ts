@@ -1,18 +1,18 @@
-export{};
-const express = require('express');
-const shortid = require('shortid');
-const router = express.Router();
-const db = require  ('../database');
-const mongoose = require('mongoose');
-const { CommentSchema } = require('../models/comment') ;
+import * as express from 'express';
+import * as shortid  from 'shortid';
+import db from '../database';
+import * as mongoose from 'mongoose';
+import { CommentSchema } from '../models/comment';
+
+const Router = express.Router();
 const Comment = mongoose.model('comment', CommentSchema);
 /**
  * comments apis
  */
-router.get('/', FindAllComments);
-router.delete('/:id', DeleteComment);
-router.post('/', AddComment);
-router.put('/:id', UpdateComment);
+Router.get('/', FindAllComments);
+Router.delete('/:id', DeleteComment);
+Router.post('/', AddComment);
+Router.put('/:id', UpdateComment);
 
 /**
  * functions used by the comments apis
@@ -81,4 +81,4 @@ function AddComment(req, res, next) {
   });
 }
 
-module.exports = router;
+export default Router;

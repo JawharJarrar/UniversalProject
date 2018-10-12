@@ -1,12 +1,11 @@
 import app from '../server';
-const  db = require('../database');
-const mongoose = require('mongoose');
-const { CommentSchema } = require('../models/comment') ;
-const  chai = require ('chai');
-const chaiHttp = require('chai-http');
+import db from '../database';
+import * as mongoose from 'mongoose';
+import { CommentSchema } from '../models/comment';
+import * as chai from 'chai';
+import chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
-require('mocha');
 const  should =  chai.should();
 const Comment = mongoose.model('Comment', CommentSchema);
 

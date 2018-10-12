@@ -1,21 +1,21 @@
-export{};
-const express = require('express');
-const shortid = require('shortid');
-const router = express.Router();
-const db = require  ('../database');
-const mongoose = require('mongoose');
-const { PostSchema } = require('../models/post') ;
-const { CommentSchema } = require ('../models/comment') ;
+import * as express from 'express';
+import * as shortid  from 'shortid';
+import db from '../database';
+import * as mongoose from 'mongoose';
+import { PostSchema } from '../models/post' ;
+import { CommentSchema } from '../models/comment' ;
+
+const Router = express.Router();
 const Comments = mongoose.model('comment', CommentSchema);
 const Post = mongoose.model('post', PostSchema);
 /**
  * posts apis
  */
-router.get('/', FindAllPosts);
-router.get('/:id/comments', CommentsByPost);
-router.delete('/:id', DeletePost);
-router.post('/', AddPost);
-router.put('/:id', UpdatePost);
+Router.get('/', FindAllPosts);
+Router.get('/:id/comments', CommentsByPost);
+Router.delete('/:id', DeletePost);
+Router.post('/', AddPost);
+Router.put('/:id', UpdatePost);
 
 /**
  * fucntions used by posts apis
@@ -91,4 +91,4 @@ function AddPost(req, res) {
   res.json({ 'SUCCESS': post });
 }
 
-module.exports = router;
+export default Router;

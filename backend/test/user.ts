@@ -1,11 +1,10 @@
 import app from '../server';
-const  db = require('../database');
-const mongoose = require('mongoose');
-const { UserSchema } = require( '../models/user') ;
-const  chai = require ('chai');
-const chaiHttp = require('chai-http');
+import db from '../database';
+import * as  mongoose  from 'mongoose';
+import { UserSchema } from  '../models/user' ;
+import * as chai from 'chai';
+import chaiHttp = require('chai-http');
 chai.use(chaiHttp);
-require ('mocha');
 const  should =  chai.should();
 const User = mongoose.model('User', UserSchema);
 /**
@@ -35,9 +34,9 @@ describe('Users', function() {
    db.query('INSERT INTO users values (?,?,NULL,?,?,?)', [
      '77',
      'jack',
-     'jack',
-     'jack',
-   'jack.com',
+     'Script@gmail.com',
+     '50729254',
+   'slack.com',
  ]);
     chai.request(app)
     .get('/users')
@@ -125,4 +124,5 @@ describe('Users', function() {
       });
   });
 });
+
 

@@ -1,15 +1,16 @@
-import express = require('express');
-const shortid = require('shortid');
-const router = express.Router();
-const db = require  ('../database');
-const mongoose = require('mongoose');
-const { AuthSchema } = require('../models/auth');
+import * as express from 'express';
+import * as shortid  from 'shortid';
+import db from '../database';
+import * as mongoose from 'mongoose';
+import { AuthSchema } from '../models/auth';
+
+const Router = express.Router();
 const Auth = mongoose.model('auth', AuthSchema);
 /**
  * authentification apis
  */
-router.post('/register', Register);
-router.post('/login', Login);
+Router.post('/register', Register);
+Router.post('/login', Login);
 /**
  * functions used by the authentification apis
  */
@@ -43,4 +44,4 @@ const auth = req.body;
     res.send( user);
   });
 }
-module.exports = router;
+export default Router;

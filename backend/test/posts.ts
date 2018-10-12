@@ -1,12 +1,11 @@
 import app from '../server';
-const mongoose = require('mongoose');
-const { PostSchema } = require('../models/post');
-require('mocha');
-const  chai = require ('chai');
-const chaiHttp = require('chai-http');
+import db from '../database';
+import * as  mongoose  from 'mongoose';
+import { PostSchema } from '../models/post';
+import * as chai from 'chai';
+import chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const  should =  chai.should();
-const  db = require('../database');
 const Post = mongoose.model('Post', PostSchema);
 /**
  *  posts api  unit tests
